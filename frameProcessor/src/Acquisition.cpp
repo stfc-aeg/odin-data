@@ -641,7 +641,7 @@ std::string Acquisition::generate_filename(size_t file_number) {
   std::stringstream generated_filename;
 
   char number_string[7];
-  snprintf(number_string, 7, "%06d", file_number + 1);
+  snprintf(number_string, 7, "%06ld", file_number + 1);
   if (!configured_filename_.empty())
   {
     generated_filename << configured_filename_ << "_" << number_string << file_extension_;
