@@ -25,6 +25,7 @@ enum RxType
   RxTypeIllegal = -1,
   RxTypeUDP,
   RxTypeZMQ,
+  RxTypeCameraLink,
 };
 
 const int          default_node                   = 1;

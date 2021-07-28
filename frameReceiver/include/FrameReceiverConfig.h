@@ -103,6 +103,8 @@ public:
       rx_name_map["UDP"] = Defaults::RxTypeUDP;
       rx_name_map["zmq"]  = Defaults::RxTypeZMQ;
       rx_name_map["ZMQ"]  = Defaults::RxTypeZMQ;
+      rx_name_map["cameralink"] = Defaults::RxTypeCameraLink;
+      rx_name_map["CameraLink"] = Defaults::RxTypeCameraLink;
     }
 
     if (rx_name_map.count(rx_name)){
@@ -122,6 +124,7 @@ public:
     {
       rx_type_map[Defaults::RxTypeUDP] = "udp";
       rx_type_map[Defaults::RxTypeZMQ] = "zmq";
+      rx_type_map[Defaults::RxTypeCameraLink] = "cameralink";
       rx_type_map[Defaults::RxTypeIllegal] = "unknown";
     }
 

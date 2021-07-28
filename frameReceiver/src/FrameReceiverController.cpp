@@ -704,7 +704,7 @@ void FrameReceiverController::configure_rx_thread(OdinData::IpcMessage& config_m
 
     // Clear the RX thread configuration status until succesful completion
     rx_thread_configured_ = false;
-        
+
     if (frame_decoder_ && buffer_manager_)
     {
 
@@ -721,11 +721,15 @@ void FrameReceiverController::configure_rx_thread(OdinData::IpcMessage& config_m
           rx_thread_.reset(new FrameReceiverZMQRxThread(config_, buffer_manager_, frame_decoder_));
           break;
 
+        case Defaults::RxTypeCameraLink:
+          rx_thread_.reset(new FrameReceiverCameraLinkRxThread(config_, buffer_manager_, frame_decoder_));
+          break;
+
         default:
           throw FrameReceiverException("Cannot create RX thread - RX type not recognised");
       }
 
-      // Start the RX thread, Flagging successful completion of configuration
+      // Start the RX thread, flagging successful completion of configuration
       rx_thread_configured_ = rx_thread_->start();
 
     }
