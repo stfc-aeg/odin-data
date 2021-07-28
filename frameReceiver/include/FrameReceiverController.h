@@ -27,6 +27,7 @@
 #include "FrameReceiverRxThread.h"
 #include "FrameReceiverUDPRxThread.h"
 #include "FrameReceiverZMQRxThread.h"
+#include "FrameReceiverCameraLinkRxThread.h"
 #include "FrameDecoder.h"
 #include "OdinDataException.h"
 #include "ClassLoader.h"
