@@ -1,3 +1,12 @@
+Introduction
+============
+* listens for frame ready notifications from FR via ZeroMQ channel
+* passes frames through dynamically-configurable chain of plugins for e.g.:
+  * decoding/reordering pixel data
+  * applying calibration algorithms (e.g. flat field, b/g subtraction)
+  * writes data out to file system in e.g. HDF5 format
+  * side-channel plugins for handling e.g. metadata
+
 Running the FrameProcessor
 --------------------------
 

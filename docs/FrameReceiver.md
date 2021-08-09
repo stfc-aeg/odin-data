@@ -1,3 +1,12 @@
+Introduction
+============
+
+* captures incoming data (UDP, TCP, ZeroMQ channels, +...)
+* stores frames in shared memory buffers
+* hands off completed frames to frame processor for further processing
+* designed to be as lightweight as possible
+* tolerant of packet loss and out-of-order data
+
 Running the FrameReceiver
 -------------------------
 
