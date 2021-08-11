@@ -20,6 +20,7 @@ using namespace log4cxx::helpers;
 #include "IpcMessage.h"
 #include "IpcReactor.h"
 #include "SharedBufferManager.h"
+#include "FrameReceiverDefaults.h"
 #include "FrameDecoderCameraLink.h"
 #include "FrameReceiverConfig.h"
 #include "FrameReceiverRxThread.h"
@@ -29,6 +30,7 @@ using namespace OdinData;
 
 namespace FrameReceiver
 {
+
 class FrameReceiverCameraLinkRxThread : public FrameReceiverRxThread
 {
 public:
@@ -39,10 +41,13 @@ public:
 private:
 
   void run_specific_service(void);
+  void handle_notify_channel(void);
   void cleanup_specific_service(void);
 
   LoggerPtr                 logger_;
   FrameDecoderCameraLinkPtr frame_decoder_;
+  IpcChannel                notify_channel_;
+  std::string               notify_endpoint_;
 
 };
 
