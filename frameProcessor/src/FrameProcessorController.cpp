@@ -621,8 +621,8 @@ void FrameProcessorController::loadPlugin(const std::string& index, const std::s
       plugin->connect_meta_channel();
       plugins_[index] = plugin;
 
-      // Register callback to FWC with FileWriter plugin
-      if (name == "FileWriter") {
+      // Register callback to controller with FileWriter plugin
+      if (name == "FileWriterPlugin") {
         plugin->register_callback("controller", this->shared_from_this(), true);
       }
 
@@ -738,10 +738,11 @@ void FrameProcessorController::shutdown() {
     pluginShutdownSent_ = true;
     LOG4CXX_DEBUG_LEVEL(1, logger_, "Plugin shutdown sent. Removing plugins once stopped.");
     // Wait until each plugin has stopped and erase it from our map
-    for (it = plugins_.begin(); it != plugins_.end(); it++) {
+    it = plugins_.begin();
+    while(it != plugins_.end()) {
       LOG4CXX_DEBUG_LEVEL(1, logger_, "Removing " << it->first);
       while(it->second->isWorking());
-      plugins_.erase(it);
+      plugins_.erase(it++);
     }
 
     // Stop worker thread (for IFrameCallback) and reactor
