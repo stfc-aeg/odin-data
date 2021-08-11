@@ -70,7 +70,7 @@ public:
 
   void register_buffer_manager(OdinData::SharedBufferManagerPtr buffer_manager);
   void register_frame_ready_callback(FrameReadyCallback callback);
-  void push_empty_buffer(int buffer_id);
+  virtual void push_empty_buffer(int buffer_id);
   const size_t get_num_empty_buffers(void) const;
   const size_t get_num_mapped_buffers(void) const;
   void drop_all_buffers(void);
