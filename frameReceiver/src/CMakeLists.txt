@@ -4,7 +4,7 @@ ADD_DEFINITIONS(-DBUILD_DIR="${CMAKE_BINARY_DIR}")
 
 include_directories(${FRAMERECEIVER_DIR}/include ${Boost_INCLUDE_DIRS} ${LOG4CXX_INCLUDE_DIRS}/.. ${ZEROMQ_INCLUDE_DIRS})
 
-file(GLOB LIB_SOURCES FrameDecoder.cpp)
+file(GLOB LIB_SOURCES FrameDecoder.cpp FrameDecoderCameraLink.cpp)
 
 # Add library for common plugin code
 add_library(${LIB_RECEIVER} SHARED ${LIB_SOURCES})
