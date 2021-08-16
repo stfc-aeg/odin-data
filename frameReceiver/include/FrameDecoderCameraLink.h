@@ -19,6 +19,7 @@
 #include <netinet/in.h>
 
 #include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/function.hpp>
 #include <boost/thread/mutex.hpp>
 
@@ -27,54 +28,57 @@ using namespace log4cxx;
 using namespace log4cxx::helpers;
 #include "DebugLevelLogger.h"
 
+#include "IpcChannel.h"
+#include "IpcMessage.h"
+#include "IpcReactor.h"
+
 #include "FrameDecoder.h"
 
 namespace FrameReceiver
 {
 
-class FrameDecoderCameraLink : public FrameDecoder
-{
-public:
+  const std::string CONFIG_DECODER_CAMERA_CTRL_ENDPOINT = "camera_ctrl_endpoint";
 
-  FrameDecoderCameraLink() :
-      FrameDecoder()
+  class FrameDecoderCameraLink : public FrameDecoder
   {
+  public:
+
+    FrameDecoderCameraLink();
+
+    virtual ~FrameDecoderCameraLink() = 0;
+
+    virtual void init(OdinData::IpcMessage& config_msg);
+    virtual void start_camera_service(
+      std::string& notify_endpoint, OdinData::IpcReactor& rxthread_reactor);
+    virtual void stop_camera_service(void);
+    virtual void handle_ctrl_channel(void) = 0;
+    void push_empty_buffer(int buffer_id);
+    bool get_empty_buffer(int& buffer_id, void*& buffer_addr);
+
+  protected:
+
+    virtual void run_camera_service(void) = 0;
+    void notify_frame_ready(int buffer_id, int frame_number);
+
+    OdinData::IpcChannel ctrl_channel_;
+    std::string ctrl_endpoint_;
+    bool run_thread_;
+
+  private:
+
+    void run_camera_service_internal(void);
+
+    OdinData::IpcChannel notify_channel_;
+    std::string notify_endpoint_;
+
+    boost::mutex mutex_;
+    boost::scoped_ptr<boost::thread> camera_thread_;
+
   };
 
-  virtual void start_camera_service(std::string& notify_endpoint) = 0;
-  virtual void stop_camera_service(void) = 0;
-  virtual ~FrameDecoderCameraLink() = 0;
+  inline FrameDecoderCameraLink::~FrameDecoderCameraLink() {};
 
-  void push_empty_buffer(int buffer_id)
-  {
-    boost::lock_guard<boost::mutex> lock(mutex_);
-    FrameDecoder::push_empty_buffer(buffer_id);
-  }
-
-  bool get_empty_buffer(int& buffer_id, void*& buffer_addr)
-  {
-    boost::lock_guard<boost::mutex> lock(mutex_);
-
-    bool buffer_avail = !empty_buffer_queue_.empty();
-
-    if (buffer_avail)
-    {
-      buffer_id = empty_buffer_queue_.front();
-      empty_buffer_queue_.pop();
-      buffer_addr = buffer_manager_->get_buffer_address(buffer_id);
-    }
-
-    return buffer_avail;
-  }
-
-private:
-  boost::mutex mutex_;
-
-};
-
-inline FrameDecoderCameraLink::~FrameDecoderCameraLink() {};
-
-typedef boost::shared_ptr<FrameDecoderCameraLink> FrameDecoderCameraLinkPtr;
+  typedef boost::shared_ptr<FrameDecoderCameraLink> FrameDecoderCameraLinkPtr;
 
 } // namespace FrameReceiver
 #endif /* INCLUDE_FRAMEDECODER_CAMERALINK_H_ */
