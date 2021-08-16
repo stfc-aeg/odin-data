@@ -54,7 +54,7 @@ void FrameReceiverCameraLinkRxThread::run_specific_service(void)
     boost::bind(&FrameReceiverCameraLinkRxThread::handle_notify_channel, this));
 
   // Start the camera-specific service implemented by the decoder
-  frame_decoder_->start_camera_service(notify_endpoint_);
+  frame_decoder_->start_camera_service(notify_endpoint_, reactor_);
 }
 
 void FrameReceiverCameraLinkRxThread::handle_notify_channel(void)
