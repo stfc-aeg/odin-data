@@ -1,6 +1,11 @@
 /*!
  * FrameReceiverCameraLinkRxThread.cpp
  *
+ * FrameReceiver RX thread implementation for CameraLink-based systems. Extends the low-level RX
+ * thead to faciliate acquisition of images by a separate canera service thread provided by
+ * frame decoders. An additional 'notifier' IPC channel is created to receive buffer ready
+ * notifications from the camera service thread.
+ *
  *  Created on: July 27, 2021
  *      Author: Tim Nicholls, STFC Detector Systems Software Group
  */
@@ -11,6 +16,16 @@
 
 using namespace FrameReceiver;
 
+//! Constructor for the FrameReceiverCameraLinkRxThread class.
+//!
+//! This method initialises the CameraLink RX thread class, creating the additional notifier
+//! IPC channel.
+//!
+//! \param[in] config - FrameReceiver configuration object
+//! \param[in] buffer_manager - pointer to the current shared buffer manager instance
+//! \param[in] frame_decoder - pointer to the current frame decoder instance
+//! \param[in] tick_period_ms - unerlying RX thread reactor tick interval in milliseconds
+//!
 FrameReceiverCameraLinkRxThread::FrameReceiverCameraLinkRxThread(FrameReceiverConfig& config,
                                                    SharedBufferManagerPtr buffer_manager,
                                                    FrameDecoderPtr frame_decoder,
@@ -26,11 +41,19 @@ FrameReceiverCameraLinkRxThread::FrameReceiverCameraLinkRxThread(FrameReceiverCo
   frame_decoder_ = boost::dynamic_pointer_cast<FrameDecoderCameraLink>(frame_decoder);
 }
 
+//! Destructor for the FrameReceiverCameraLinkRxThread class
+//!
 FrameReceiverCameraLinkRxThread::~FrameReceiverCameraLinkRxThread()
 {
   LOG4CXX_DEBUG_LEVEL(1, logger_, "Destroying FrameReceiverCameraLinkRxThread....");
 }
 
+//! Run the specific service implementation for the CamaeraLink RX thread class
+//!
+//! This method starts the class-specific service run in the RX thread class. The notifier channel
+//! is bound to its endpoint and added to the RX thread reactor and then the camera-specifc
+//! acquisition service is launched in the frame decoder.
+//!
 void FrameReceiverCameraLinkRxThread::run_specific_service(void)
 {
   LOG4CXX_DEBUG_LEVEL(1, logger_, "Running CameraLink RX thread service");
@@ -57,6 +80,12 @@ void FrameReceiverCameraLinkRxThread::run_specific_service(void)
   frame_decoder_->start_camera_service(notify_endpoint_, reactor_);
 }
 
+//! Handle events on the RX thread notifier channel
+//!
+//! This method is called by the RX thread reactor to handle events on the notifier channel.
+//! Incoming frame ready notifications from the camera service thread and forwarded to the main
+//! application thread via the RX channel. All other messages are logged as errors and discarded.
+//!
 void FrameReceiverCameraLinkRxThread::handle_notify_channel(void)
 {
   std::string notify_msg_encoded = notify_channel_.recv();
@@ -86,6 +115,11 @@ void FrameReceiverCameraLinkRxThread::handle_notify_channel(void)
   }
 }
 
+//! Clean up the RX thread service
+//!
+//! This method is called to clean up the RX thread service on shutdown, stopping frame decoder
+//! camera service in turn.
+//!
 void FrameReceiverCameraLinkRxThread::cleanup_specific_service(void)
 {
   LOG4CXX_DEBUG_LEVEL(1, logger_, "Cleaning up CameraLink RX thread service");
