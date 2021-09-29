@@ -362,6 +362,38 @@ const char* IpcMessage::encode(void)
   return encode_buffer_.GetString();
 }
 
+//! Returns a JSON-encoded string of the message parameters at a specified path
+//!
+//! This method returns a JSON-encoded sting version of the parameters associated with the message,
+//! or a subset of those at a specified slash-delimted path.
+//!
+//! \param param_path - JSON pointer-like slash delimited path into the parameter block
+//! \return  JSON encoded parameters as a null-terminated, string character array
+
+const char* IpcMessage::encode_params(const std::string& param_path)
+{
+
+  // Construct a JSON pointer string to the message parameters. If a path argument was specified
+  // append that accordingly.
+  std::string path = "/params";
+  if (!param_path.empty())
+  {
+    path = path + "/" + param_path;
+  }
+
+  // Resolve the pointer to the appropriate location in the parameters
+  const rapidjson::Value* param_ptr = rapidjson::Pointer(path.c_str()).Get(doc_);
+
+  // Clear the encode buffer, create a writer and associate with the parameter pointer
+  encode_buffer_.Clear();
+  rapidjson::Writer<rapidjson::StringBuffer, rapidjson::UTF8<> > writer(encode_buffer_);
+  param_ptr->Accept(writer);
+
+  // Return the string encoding of the requested parameters
+  return encode_buffer_.GetString();
+}
+
+
 //! Overloaded equality relational operator.
 //!
 //! This function overloads the equality relational operator, allowing two
