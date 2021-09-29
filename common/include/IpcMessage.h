@@ -63,7 +63,7 @@ private:
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/error/en.h"
-
+#include "rapidjson/pointer.h"
 
 namespace OdinData
 {
@@ -310,6 +310,9 @@ public:
 
   //! Returns a JSON-encoded string of the message
   const char* encode(void);
+
+  //! Returns a JSON-encoded string of the message parameters at a specified path
+  const char* encode_params(const std::string& param_path = std::string());
 
   //! Overloaded equality relational operator
   friend bool operator ==(IpcMessage const& lhs_msg, IpcMessage const& rhs_msg);
