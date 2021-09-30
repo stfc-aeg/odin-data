@@ -54,11 +54,11 @@ namespace FrameReceiver
     virtual void handle_ctrl_channel(void) = 0;
     void push_empty_buffer(int buffer_id);
     bool get_empty_buffer(int& buffer_id, void*& buffer_addr);
+    void notify_frame_ready(int buffer_id, int frame_number);
 
   protected:
 
     virtual void run_camera_service(void) = 0;
-    void notify_frame_ready(int buffer_id, int frame_number);
 
     OdinData::IpcChannel ctrl_channel_;
     std::string ctrl_endpoint_;
