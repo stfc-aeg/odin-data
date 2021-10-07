@@ -141,12 +141,34 @@ IpcMessage::IpcMessage(const rapidjson::Value& value,
   doc_.AddMember("params", newValue, doc_.GetAllocator());
 }
 
+//! Updates parameters from another IPCMessage.
+//!
+//! This will iterate the parameters in the given IPCMessage and set them on this instance.
+//!
+//! \param other - IPCMessage to take parameters from
+
 void IpcMessage::update(const IpcMessage& other)
 {
   std::vector<std::string> params = other.get_param_names();
   for (std::vector<std::string>::const_iterator itr = params.begin(); itr != params.end(); ++itr) {
     this->set_param<const rapidjson::Value&>(*itr, other.get_param<const rapidjson::Value&>(*itr));
   }
+}
+
+//! Updates parameters from a rapidJSON object.
+//!
+//! This method will update the parameters in message with the contents of the specified
+//! JSON object.
+//!
+//! \param params - RapidJSON value object of parameters
+
+void IpcMessage::update(rapidjson::Value& params)
+{
+    for (rapidjson::Value::ConstMemberIterator itr = params.MemberBegin();
+        itr != params.MemberEnd(); ++itr)
+    {
+        this->set_param<const rapidjson::Value&>(itr->name.GetString(), itr->value);
+    }
 }
 
 //! Returns a vector of all parameter names contained in the message.
@@ -393,6 +415,18 @@ const char* IpcMessage::encode_params(const std::string& param_path)
   return encode_buffer_.GetString();
 }
 
+void IpcMessage::encode_params(rapidjson::Value& param_obj, const std::string& param_path)
+{
+  std::string path = "/params";
+  if (!param_path.empty())
+  {
+    path = path + "/" + param_path;
+  }
+
+  const rapidjson::Value* param_ptr = rapidjson::Pointer(path.c_str()).Get(doc_);
+
+  param_obj.CopyFrom(*param_ptr, doc_.GetAllocator());
+}
 
 //! Overloaded equality relational operator.
 //!
