@@ -160,14 +160,28 @@ void IpcMessage::update(const IpcMessage& other)
 //! This method will update the parameters in message with the contents of the specified
 //! JSON object.
 //!
-//! \param params - RapidJSON value object of parameters
+//! \param param_val - RapidJSON value object of parameters
+//! \param param_prefix - string prefix for parameter path to set
 
-void IpcMessage::update(rapidjson::Value& params)
+void IpcMessage::update(const rapidjson::Value& param_val, std::string param_prefix)
 {
-    for (rapidjson::Value::ConstMemberIterator itr = params.MemberBegin();
-        itr != params.MemberEnd(); ++itr)
+    if (param_val.IsObject())
     {
-        this->set_param<const rapidjson::Value&>(itr->name.GetString(), itr->value);
+      for (rapidjson::Value::ConstMemberIterator itr = param_val.MemberBegin();
+          itr != param_val.MemberEnd(); ++itr)
+      {
+
+          std::string param_path = itr->name.GetString();
+          if (!param_prefix.empty())
+          {
+            param_path = param_prefix + "/" + param_path;
+          }
+          this->update(itr->value, param_path);
+      }
+    }
+    else
+    {
+      this->set_param<const rapidjson::Value&>(param_prefix, param_val);
     }
 }
 

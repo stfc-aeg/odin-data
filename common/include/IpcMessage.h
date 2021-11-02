@@ -125,7 +125,7 @@ public:
   void update(const IpcMessage& other);
 
   //! Updates parameters from a rapidJSON object.
-  void update(rapidjson::Value& params);
+  void update(const rapidjson::Value& param_val, std::string param_prefix="");
 
   //! Gets the value of a named parameter in the message.
   //!
