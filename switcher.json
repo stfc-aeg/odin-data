@@ -1,6 +1,6 @@
 [
   {
-    "version": "master",
-    "url": "https://stfc-aeg.github.io/odin-data/master/"
+    "version": "dpdk_dev_full",
+    "url": "https://stfc-aeg.github.io/odin-data/dpdk_dev_full/"
   }
 ]
