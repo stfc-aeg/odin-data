@@ -1,6 +1,6 @@
 [
   {
-    "version": "dpdk_dev_full",
-    "url": "https://stfc-aeg.github.io/odin-data/dpdk_dev_full/"
+    "version": "dpdk_support",
+    "url": "https://stfc-aeg.github.io/odin-data/dpdk_support/"
   }
 ]
