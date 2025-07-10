@@ -7,50 +7,55 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; odin-data 0+untagged.1.gf73a290 documentation</title>
+    <title>Index &#8212; odin-data 0.1.dev1+g07426d1 documentation</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="_static/documentation_options.js?v=0626310e"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/documentation_options.js?v=a1ceba2a"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
     <script>
-        DOCUMENTATION_OPTIONS.theme_version = '0.15.2';
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://odin-detector.github.io/odin-data/switcher.json';
         DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'master';
-        DOCUMENTATION_OPTIONS.show_version_warning_banner = false;
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
         </script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="master" />
   </head>
   
   
@@ -58,31 +63,16 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -90,7 +80,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search the docs ..."
          aria-label="Search the docs ..."
          autocomplete="off"
@@ -98,20 +87,27 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
 <div class="bd-header__inner bd-page-width">
-  <label class="sidebar-toggle primary-toggle" for="__primary">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
     <span class="fa-solid fa-bars"></span>
-  </label>
+  </button>
   
   
   <div class="col-lg-3 navbar-header-items__start">
     
       <div class="navbar-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="index.html">
@@ -126,7 +122,7 @@
     
     
     <img src="_static/odin.png" class="logo__image only-light" alt=""/>
-    <script>document.write(`<img src="_static/odin.png" class="logo__image only-dark" alt=""/>`);</script>
+    <img src="_static/odin.png" class="logo__image only-dark pst-js-only" alt=""/>
   
   
     <p class="title logo__title">odin-data</p>
@@ -140,29 +136,29 @@
     <div class="me-auto navbar-header-items__center">
       
         <div class="navbar-item">
-<nav class="navbar-nav">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="user/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="developer/index.html">
-                        Developer Guide
-                      </a>
-                    </li>
-                
 
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://github.com/odin-detector/odin-data/releases">
-                    Release Notes
-                  </a>
-                </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/index.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/odin-detector/odin-data/releases">
+    Release Notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
       
@@ -174,31 +170,23 @@
         <div class="navbar-item navbar-persistent--container">
           
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
         </div>
       
       
         <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
       
-        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+        <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -209,34 +197,30 @@ document.write(`
           
           
           
-          <a href="https://github.com/odin-detector/odin-data" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/odin-detector/odin-data" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
       
         <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-2"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-2"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-2"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-2">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
       
     </div>
     
@@ -245,15 +229,11 @@ document.write(`
   
     <div class="navbar-persistent--mobile">
 
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
     </div>
   
 
@@ -270,7 +250,8 @@ document.write(`
       
         
       
-      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
         
 
   
@@ -279,32 +260,35 @@ document.write(`
     
       <div class="sidebar-header-items__center">
         
-          <div class="navbar-item">
-<nav class="navbar-nav">
+          
+          
+            <div class="navbar-item">
+<nav>
   <ul class="bd-navbar-elements navbar-nav">
     
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="user/index.html">
-                        User Guide
-                      </a>
-                    </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="user/index.html">
+    User Guide
+  </a>
+</li>
 
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="developer/index.html">
-                        Developer Guide
-                      </a>
-                    </li>
-                
 
-                <li class="nav-item">
-                  <a class="nav-link nav-external" href="https://github.com/odin-detector/odin-data/releases">
-                    Release Notes
-                  </a>
-                </li>
-                
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="developer/index.html">
+    Developer Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://github.com/odin-detector/odin-data/releases">
+    Release Notes
+  </a>
+</li>
+
   </ul>
 </nav></div>
+          
         
       </div>
     
@@ -314,17 +298,13 @@ document.write(`
         
           <div class="navbar-item">
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script></div>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
         
-          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+          <div class="navbar-item"><ul class="navbar-icon-links"
     aria-label="Icon Links">
         <li class="nav-item">
           
@@ -335,34 +315,30 @@ document.write(`
           
           
           
-          <a href="https://github.com/odin-detector/odin-data" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+          <a href="https://github.com/odin-detector/odin-data" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
             <span class="sr-only">GitHub</span></a>
         </li>
 </ul></div>
         
           <div class="navbar-item">
-<script>
-document.write(`
-  <div class="version-switcher__container dropdown">
-    <button id="pst-version-switcher-button-3"
-      type="button"
-      class="version-switcher__button btn btn-sm navbar-btn dropdown-toggle"
-      data-bs-toggle="dropdown"
-      aria-haspopup="listbox"
-      aria-controls="pst-version-switcher-list-3"
-      aria-label="Version switcher list"
-    >
-      Choose version  <!-- this text may get changed later by javascript -->
-      <span class="caret"></span>
-    </button>
-    <div id="pst-version-switcher-list-3"
-      class="version-switcher__menu dropdown-menu list-group-flush py-0"
-      role="listbox" aria-labelledby="pst-version-switcher-button-3">
-      <!-- dropdown will be populated by javascript on page load -->
-    </div>
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
   </div>
-`);
-</script></div>
+</div></div>
         
       </div>
     
@@ -370,20 +346,25 @@ document.write(`
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article"></div>
+              <div class="bd-header-article d-print-none"></div>
               
               
               
@@ -672,6 +653,10 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin21DummyUDPProcessPluginEv">FrameProcessor::DummyUDPProcessPlugin::DummyUDPProcessPlugin (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin7executeERKNSt6stringERN8OdinData10IpcMessageE">FrameProcessor::DummyUDPProcessPlugin::execute (C++ function)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin13EXECUTE_PRINTE">FrameProcessor::DummyUDPProcessPlugin::EXECUTE_PRINT (C++ member)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin16get_version_longEv">FrameProcessor::DummyUDPProcessPlugin::get_version_long (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin17get_version_majorEv">FrameProcessor::DummyUDPProcessPlugin::get_version_major (C++ function)</a>
@@ -693,6 +678,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin13process_frameEN5boost10shared_ptrI5FrameEE">FrameProcessor::DummyUDPProcessPlugin::process_frame (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin20process_lost_packetsERN5boost10shared_ptrI5FrameEE">FrameProcessor::DummyUDPProcessPlugin::process_lost_packets (C++ function)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin15requestCommandsEv">FrameProcessor::DummyUDPProcessPlugin::requestCommands (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor21DummyUDPProcessPlugin20requestConfigurationERN8OdinData10IpcMessageE">FrameProcessor::DummyUDPProcessPlugin::requestConfiguration (C++ function)</a>
 </li>
@@ -762,13 +749,13 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin21CONFIG_FILE_EXTENSIONE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_EXTENSION (C++ member)</a>
 </li>
-      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin16CONFIG_FILE_NAMEE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_NAME (C++ member)</a>
-</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin24CONFIG_FILE_NUMBER_STARTE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_NUMBER_START (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin16CONFIG_FILE_PATHE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_PATH (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin19CONFIG_FILE_POSTFIXE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_POSTFIX (C++ member)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin18CONFIG_FILE_PREFIXE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_PREFIX (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin23CONFIG_FILE_USE_NUMBERSE">FrameProcessor::FileWriterPlugin::CONFIG_FILE_USE_NUMBERS (C++ member)</a>
 </li>
@@ -812,6 +799,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin15delete_datasetsEv">FrameProcessor::FileWriterPlugin::delete_datasets (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin7executeERKNSt6stringERN8OdinData10IpcMessageE">FrameProcessor::FileWriterPlugin::execute (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin15file_extension_E">FrameProcessor::FileWriterPlugin::file_extension_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin13file_postfix_E">FrameProcessor::FileWriterPlugin::file_postfix_ (C++ member)</a>
@@ -852,6 +841,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin13process_frameEN5boost10shared_ptrI5FrameEE">FrameProcessor::FileWriterPlugin::process_frame (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin15requestCommandsEv">FrameProcessor::FileWriterPlugin::requestCommands (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin20requestConfigurationERN8OdinData10IpcMessageE">FrameProcessor::FileWriterPlugin::requestConfiguration (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin16reset_statisticsEv">FrameProcessor::FileWriterPlugin::reset_statistics (C++ function)</a>
@@ -868,11 +859,15 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin13start_writingEv">FrameProcessor::FileWriterPlugin::start_writing (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin13START_WRITINGE">FrameProcessor::FileWriterPlugin::START_WRITING (C++ member)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin6statusERN8OdinData10IpcMessageE">FrameProcessor::FileWriterPlugin::status (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin16stop_acquisitionEv">FrameProcessor::FileWriterPlugin::stop_acquisition (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin12stop_writingEv">FrameProcessor::FileWriterPlugin::stop_writing (C++ function)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin12STOP_WRITINGE">FrameProcessor::FileWriterPlugin::STOP_WRITING (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor16FileWriterPlugin15timeout_active_E">FrameProcessor::FileWriterPlugin::timeout_active_ (C++ member)</a>
 </li>
@@ -1018,6 +1013,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController20closeMetaTxInterfaceEv">FrameProcessor::FrameProcessorController::closeMetaTxInterface (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController11COMMAND_KEYE">FrameProcessor::FrameProcessorController::COMMAND_KEY (C++ member)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController20CONFIG_CTRL_ENDPOINTE">FrameProcessor::FrameProcessorController::CONFIG_CTRL_ENDPOINT (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController12CONFIG_DEBUGE">FrameProcessor::FrameProcessorController::CONFIG_DEBUG (C++ member)</a>
@@ -1078,6 +1075,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController16disconnectPluginERKNSt6stringERKNSt6stringE">FrameProcessor::FrameProcessorController::disconnectPlugin (C++ function)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController7executeERN8OdinData10IpcMessageERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorController::execute (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController14exitCondition_E">FrameProcessor::FrameProcessorController::exitCondition_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController10exitMutex_E">FrameProcessor::FrameProcessorController::exitMutex_ (C++ member)</a>
@@ -1120,6 +1119,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController8reactor_E">FrameProcessor::FrameProcessorController::reactor_ (C++ member)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController15requestCommandsERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorController::requestCommands (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController20requestConfigurationERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorController::requestConfiguration (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController15resetStatisticsERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorController::resetStatistics (C++ function)</a>
@@ -1147,6 +1148,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController18shutdownFrameCountE">FrameProcessor::FrameProcessorController::shutdownFrameCount (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController15stored_configs_E">FrameProcessor::FrameProcessorController::stored_configs_ (C++ member)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController13SUPPORTED_KEYE">FrameProcessor::FrameProcessorController::SUPPORTED_KEY (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor24FrameProcessorController16threadInitError_E">FrameProcessor::FrameProcessorController::threadInitError_ (C++ member)</a>
 </li>
@@ -1178,6 +1181,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin15error_messages_E">FrameProcessor::FrameProcessorPlugin::error_messages_ (C++ member)</a>
 </li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin7executeERKNSt6stringERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorPlugin::execute (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin20FrameProcessorPluginEv">FrameProcessor::FrameProcessorPlugin::FrameProcessorPlugin (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin10get_errorsEv">FrameProcessor::FrameProcessorPlugin::get_errors (C++ function)</a>
@@ -1207,6 +1212,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin20remove_all_callbacksEv">FrameProcessor::FrameProcessorPlugin::remove_all_callbacks (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin15remove_callbackERKNSt6stringE">FrameProcessor::FrameProcessorPlugin::remove_callback (C++ function)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin15requestCommandsEv">FrameProcessor::FrameProcessorPlugin::requestCommands (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor20FrameProcessorPlugin20requestConfigurationERN8OdinData10IpcMessageE">FrameProcessor::FrameProcessorPlugin::requestConfiguration (C++ function)</a>
 </li>
@@ -1346,6 +1353,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5File10start_swmrEv">FrameProcessor::HDF5File::start_swmr (C++ function)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5File10unlimited_E">FrameProcessor::HDF5File::unlimited_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5File21use_earliest_version_E">FrameProcessor::HDF5File::use_earliest_version_ (C++ member)</a>
@@ -1354,8 +1363,6 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5File11write_frameERK5Frame7hsize_t8uint64_tR19HDF5CallDurations_t">FrameProcessor::HDF5File::write_frame (C++ function)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5File15write_parameterERK5Frame17DatasetDefinition7hsize_t">FrameProcessor::HDF5File::write_parameter (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor8HDF5FileD0Ev">FrameProcessor::HDF5File::~HDF5File (C++ function)</a>
@@ -1493,6 +1500,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor14LiveViewPlugin9configureERN8OdinData10IpcMessageERN8OdinData10IpcMessageE">FrameProcessor::LiveViewPlugin::configure (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor14LiveViewPlugin10DATA_TYPESE">FrameProcessor::LiveViewPlugin::DATA_TYPES (C++ member)</a>
+</li>
+      <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor14LiveViewPlugin14dataset_names_E">FrameProcessor::LiveViewPlugin::dataset_names_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-processor.html#_CPPv4N14FrameProcessor14LiveViewPlugin9datasets_E">FrameProcessor::LiveViewPlugin::datasets_ (C++ member)</a>
 </li>
@@ -1840,6 +1849,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder22enable_packet_logging_E">FrameReceiver::FrameDecoder::enable_packet_logging_ (C++ member)</a>
 </li>
+      <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder7executeERKNSt6stringERN8OdinData10IpcMessageE">FrameReceiver::FrameDecoder::execute (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder17frame_buffer_map_E">FrameReceiver::FrameDecoder::frame_buffer_map_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder17frame_timeout_ms_E">FrameReceiver::FrameDecoder::frame_timeout_ms_ (C++ member)</a>
@@ -1893,6 +1904,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder23register_buffer_managerEN8OdinData22SharedBufferManagerPtrE">FrameReceiver::FrameDecoder::register_buffer_manager (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder29register_frame_ready_callbackE18FrameReadyCallback">FrameReceiver::FrameDecoder::register_frame_ready_callback (C++ function)</a>
+</li>
+      <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder16request_commandsEv">FrameReceiver::FrameDecoder::request_commands (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver12FrameDecoder21request_configurationEKNSt6stringERN8OdinData10IpcMessageE">FrameReceiver::FrameDecoder::request_configuration (C++ function)</a>
 </li>
@@ -2010,6 +2023,8 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController19decoder_configured_E">FrameReceiver::FrameReceiverController::decoder_configured_ (C++ member)</a>
 </li>
+      <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController7executeERN8OdinData10IpcMessageERN8OdinData10IpcMessageE">FrameReceiver::FrameReceiverController::execute (C++ function)</a>
+</li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController14frame_decoder_E">FrameReceiver::FrameReceiverController::frame_decoder_ (C++ member)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController20frame_ready_channel_E">FrameReceiver::FrameReceiverController::frame_ready_channel_ (C++ member)</a>
@@ -2053,6 +2068,8 @@ document.write(`
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController17precharge_buffersEv">FrameReceiver::FrameReceiverController::precharge_buffers (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController8reactor_E">FrameReceiver::FrameReceiverController::reactor_ (C++ member)</a>
+</li>
+      <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController16request_commandsERN8OdinData10IpcMessageE">FrameReceiver::FrameReceiverController::request_commands (C++ function)</a>
 </li>
       <li><a href="developer/reference/api/frame-receiver.html#_CPPv4N13FrameReceiver23FrameReceiverController21request_configurationERN8OdinData10IpcMessageE">FrameReceiver::FrameReceiverController::request_configuration (C++ function)</a>
 </li>
@@ -2398,7 +2415,7 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4NK8OdinData10IpcMessage15get_param_namesEv">OdinData::IpcMessage::get_param_names (C++ function)</a>
 </li>
-      <li><a href="developer/reference/api/common.html#_CPPv4I0ENK8OdinData10IpcMessage9get_valueE1TRN9rapidjson5Value19ConstMemberIteratorE">OdinData::IpcMessage::get_value (C++ function)</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueEiRN9rapidjson5Value19ConstMemberIteratorE">[1]</a>
+      <li><a href="developer/reference/api/common.html#_CPPv4I0ENK8OdinData10IpcMessage9get_valueE1TRN9rapidjson5Value19ConstMemberIteratorE">OdinData::IpcMessage::get_value (C++ function)</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueE7int64_tRN9rapidjson5Value19ConstMemberIteratorE">[1]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueE8uint64_tRN9rapidjson5Value19ConstMemberIteratorE">[2]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueENSt6stringERN9rapidjson5Value19ConstMemberIteratorE">[3]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueERKN9rapidjson5ValueERN9rapidjson5Value19ConstMemberIteratorE">[4]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueEbRN9rapidjson5Value19ConstMemberIteratorE">[5]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueEdRN9rapidjson5Value19ConstMemberIteratorE">[6]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueEiRN9rapidjson5Value19ConstMemberIteratorE">[7]</a>, <a href="developer/reference/api/common.html#_CPPv4IENK8OdinData10IpcMessage9get_valueEjRN9rapidjson5Value19ConstMemberIteratorE">[8]</a>
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4NK8OdinData10IpcMessage9has_paramERKNSt6stringE">OdinData::IpcMessage::has_param (C++ function)</a>
 </li>
@@ -2450,6 +2467,10 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal18MsgValCmdConfigureE">OdinData::IpcMessage::MsgVal::MsgValCmdConfigure (C++ enumerator)</a>
 </li>
+      <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal16MsgValCmdExecuteE">OdinData::IpcMessage::MsgVal::MsgValCmdExecute (C++ enumerator)</a>
+</li>
+      <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal24MsgValCmdRequestCommandsE">OdinData::IpcMessage::MsgVal::MsgValCmdRequestCommands (C++ enumerator)</a>
+</li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal29MsgValCmdRequestConfigurationE">OdinData::IpcMessage::MsgVal::MsgValCmdRequestConfiguration (C++ enumerator)</a>
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal23MsgValCmdRequestVersionE">OdinData::IpcMessage::MsgVal::MsgValCmdRequestVersion (C++ enumerator)</a>
@@ -2462,10 +2483,10 @@ document.write(`
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal15MsgValCmdStatusE">OdinData::IpcMessage::MsgVal::MsgValCmdStatus (C++ enumerator)</a>
 </li>
-      <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal13MsgValIllegalE">OdinData::IpcMessage::MsgVal::MsgValIllegal (C++ enumerator)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal13MsgValIllegalE">OdinData::IpcMessage::MsgVal::MsgValIllegal (C++ enumerator)</a>
+</li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal24MsgValNotifyBufferConfigE">OdinData::IpcMessage::MsgVal::MsgValNotifyBufferConfig (C++ enumerator)</a>
 </li>
       <li><a href="developer/reference/api/common.html#_CPPv4N8OdinData10IpcMessage6MsgVal27MsgValNotifyBufferPrechargeE">OdinData::IpcMessage::MsgVal::MsgValNotifyBufferPrecharge (C++ enumerator)</a>
@@ -2625,7 +2646,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
 </div>
@@ -2634,8 +2655,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>
@@ -2648,8 +2667,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -2660,7 +2679,8 @@ document.write(`
       
         <div class="footer-item">
 <p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.2.
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
 </p></div>
       
     </div>
