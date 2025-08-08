@@ -6,6 +6,7 @@
  */
 
 #include "LiveViewPlugin.h"
+#include <DebugLevelLogger.h>
 #include "version.h"
 #include <boost/algorithm/string.hpp>
 
@@ -61,7 +62,7 @@ void LiveViewPlugin::process_frame(boost::shared_ptr<Frame> frame)
 {
   /** Static Frame Count will increment each time this method is called, basically as a count of how many frames have been processed by the plugin*/
   static uint32_t frame_count_;
-  LOG4CXX_TRACE(logger_, "LiveViewPlugin Process Frame.");
+  LOG4CXX_DEBUG_LEVEL(3, logger_, "LiveViewPlugin Process Frame.");
   if(is_bound_)
   {
     std::string frame_dataset = frame->get_meta_data().get_dataset_name();
@@ -95,7 +96,7 @@ void LiveViewPlugin::process_frame(boost::shared_ptr<Frame> frame)
           boost::posix_time::time_duration elapsed = (boost::posix_time::microsec_clock::local_time() - time_last_frame_);
           if (elapsed > time_between_frames_)
           {
-            LOG4CXX_TRACE(logger_, "Frame " << frame->get_frame_number() << " elapsed time " << elapsed << " > " << time_between_frames_);
+            LOG4CXX_DEBUG_LEVEL(3, logger_, "Frame " << frame->get_frame_number() << " elapsed time " << elapsed << " > " << time_between_frames_);
             pass_frame = true;
           }
         }
@@ -103,7 +104,7 @@ void LiveViewPlugin::process_frame(boost::shared_ptr<Frame> frame)
         // If the frame frequency setting is active, check if this frame should be sent
         if (frame_freq_ != 0 && frame_count_ % frame_freq_ == 0)
         {
-          LOG4CXX_TRACE(logger_, "Frame " << frame->get_frame_number() << " count matches frequency " << frame_freq_);
+          LOG4CXX_DEBUG_LEVEL(3, logger_, "Frame " << frame->get_frame_number() << " count matches frequency " << frame_freq_);
           pass_frame = true;
         }
 
@@ -117,12 +118,12 @@ void LiveViewPlugin::process_frame(boost::shared_ptr<Frame> frame)
       }
       else
       {
-        LOG4CXX_TRACE(logger_, "LiveViewPlugin No Tag(s) found, frame skipped.");
+        LOG4CXX_DEBUG_LEVEL(3, logger_, "LiveViewPlugin No Tag(s) found, frame skipped.");
       }
     }
     else
     {
-      LOG4CXX_TRACE(logger_,"Frame dataset: " << frame_dataset << " not desired");
+      LOG4CXX_DEBUG_LEVEL(3, logger_, "Frame dataset: " << frame_dataset << " not desired");
     }
 
   }
@@ -131,7 +132,7 @@ void LiveViewPlugin::process_frame(boost::shared_ptr<Frame> frame)
     LOG4CXX_WARN(logger_, "Socket is unbound. Check if address " << image_view_socket_addr_ << " is in use.");
   }
 
-  LOG4CXX_TRACE(logger_, "Pushing Data Frame" );
+  LOG4CXX_DEBUG_LEVEL(3, logger_, "Pushing Data Frame" );
   this->push(frame);
 }
 
@@ -234,7 +235,7 @@ void LiveViewPlugin::pass_live_frame(boost::shared_ptr<Frame> frame)
 
   rapidjson::Document document; /* Header info*/
   document.SetObject();
-  LOG4CXX_TRACE(logger_, "LiveViewPlugin Building Frame Header");
+  LOG4CXX_DEBUG_LEVEL(3, logger_, "LiveViewPlugin Building Frame Header");
   //building image header
 
   add_json_member(&document, "frame_num", frame_num);
@@ -282,9 +283,9 @@ void LiveViewPlugin::pass_live_frame(boost::shared_ptr<Frame> frame)
 
   document.Accept(writer);
 
-  LOG4CXX_TRACE(logger_, "LiveViewPlugin Header Built, sending down socket.");
+  LOG4CXX_DEBUG_LEVEL(3, logger_, "LiveViewPlugin Header Built, sending down socket.");
   publish_socket_.send(buffer.GetString(), ZMQ_SNDMORE);
-  LOG4CXX_TRACE(logger_, "LiveViewPlugin Sending frame raw data");
+  LOG4CXX_DEBUG_LEVEL(3, logger_, "LiveViewPlugin Sending frame raw data");
   publish_socket_.send(size, frame_data_copy, 0);
 
   time_last_frame_ = boost::posix_time::microsec_clock::local_time();

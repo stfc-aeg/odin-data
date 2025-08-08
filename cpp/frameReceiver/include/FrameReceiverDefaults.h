@@ -33,6 +33,7 @@ const std::string  default_decoder_type           = "unknown";
 const RxType       default_rx_type                = RxTypeUDP;
 const std::string  default_rx_port_list           = "8989,8990";
 const std::string  default_rx_address             = "0.0.0.0";
+const std::string  default_rx_address_list        = "127.0.0.1,127.0.0.1";
 #ifdef __APPLE__
 const int          default_rx_recv_buffer_size    = 1048576;
 #else

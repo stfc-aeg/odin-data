@@ -38,6 +38,7 @@ namespace FrameReceiver
   const std::string CONFIG_FRAME_RELEASE_ENDPOINT = "frame_release_endpoint";
   const std::string CONFIG_RX_PORTS = "rx_ports";
   const std::string CONFIG_RX_ADDRESS = "rx_address";
+  const std::string CONFIG_RX_ADDRESS_LIST = "rx_address_list";
   const std::string CONFIG_RX_RECV_BUFFER_SIZE = "rx_recv_buffer_size";
   const std::string CONFIG_SHARED_BUFFER_NAME = "shared_buffer_name";
   const std::string CONFIG_FRAME_TIMEOUT_MS = "frame_timeout_ms";
@@ -70,7 +71,27 @@ public:
       force_reconfig_(Defaults::default_force_reconfig)
   {
     tokenize_port_list(rx_ports_, Defaults::default_rx_port_list);
+    tokenize_address_list(rx_address_list_, Defaults::default_rx_address_list);
   };
+
+  void tokenize_address_list(std::vector<std::string>& address_list, const std::string address_list_str)
+  {
+    address_list.clear();
+    const std::string delimiter(",");
+    std::size_t start = 0, end = 0;
+
+    while (end != std::string::npos)
+    {
+      end = address_list_str.find(delimiter, start);
+      const char* address_str = address_list_str.substr(start, (end == std::string::npos) ? std::string::npos : end - start).c_str();
+      start = ((end > (std::string::npos - delimiter.size())) ? std::string::npos : end + delimiter.size());
+
+      if (address_str && strlen(address_str) > 0)
+      {
+        address_list.push_back(std::string(address_str));
+      }
+    }
+  }
 
   void tokenize_port_list(std::vector<uint16_t>& port_list, const std::string port_list_str)
   {
@@ -150,6 +171,18 @@ public:
     return rx_port_list;
   }
 
+  std::string rx_address_list(void)
+  {
+    std::stringstream rx_address_stream;
+    std::copy(rx_address_list_.begin(), rx_address_list_.end(),
+        std::ostream_iterator<std::string>(rx_address_stream, ","));
+    std::string rx_address_list = rx_address_stream.str();
+    rx_address_list.erase(rx_address_list.length()-1);
+
+    return rx_address_list;
+  }
+
+
   void as_ipc_message(OdinData::IpcMessage& config_msg)
   {
 
@@ -164,6 +197,7 @@ public:
     config_msg.set_param<std::string>(CONFIG_RX_PORTS, rx_port_list());
 
     config_msg.set_param<std::string>(CONFIG_RX_ADDRESS, rx_address_);
+    config_msg.set_param<std::string>(CONFIG_RX_ADDRESS_LIST, rx_address_list());
     config_msg.set_param<int>(CONFIG_RX_RECV_BUFFER_SIZE, rx_recv_buffer_size_);
     config_msg.set_param<std::string>(CONFIG_RX_ENDPOINT, rx_channel_endpoint_);
     config_msg.set_param<std::string>(CONFIG_CTRL_ENDPOINT, ctrl_channel_endpoint_);
@@ -189,6 +223,7 @@ private:
   Defaults::RxType      rx_type_;                //!< Type of receiver interface (UDP or ZMQ)
   std::vector<uint16_t> rx_ports_;               //!< Port(s) to receive frame data on
   std::string           rx_address_;             //!< IP address to receive frame data on
+  std::vector<std::string>   rx_address_list_;             //!< List of IP address(es) to receive frame data on
   int                   rx_recv_buffer_size_;    //!< Receive socket buffer size
   unsigned int          io_threads_;             //!< Number of IO threads for IPC channels
   std::string           rx_channel_endpoint_;    //!< IPC channel endpoint for RX thread communication

@@ -33,8 +33,29 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
 {
   LOG4CXX_DEBUG_LEVEL(1, logger_, "Running UDP RX thread service");
 
+  int addresses_size = config_.rx_address_list_.size();
+  int ports_size = config_.rx_ports_.size();
+  if (addresses_size != ports_size)
+  {
+    std::stringstream ss;
+    ss << "RX channel address list size (" << addresses_size << ") does not match port list size (" << ports_size << ")";
+    this->set_thread_init_error(ss.str());
+    return;
+  }
+
+  // Clunky galore..
+  std::vector<std::string>::iterator rx_address_itr = config_.rx_address_list_.begin();
+
   for (std::vector<uint16_t>::iterator rx_port_itr = config_.rx_ports_.begin(); rx_port_itr != config_.rx_ports_.end(); rx_port_itr++)
   {
+    if (rx_address_itr == config_.rx_address_list_.end())
+    {
+      std::stringstream ss;
+      ss << "RX channel unexpectedly ran out of IP addresses; cannot create receive socket : " << strerror(errno);
+      this->set_thread_init_error(ss.str());
+      return;
+    }
+    std::string rx_address = *rx_address_itr;
 
     uint16_t rx_port = *rx_port_itr;
 
@@ -69,12 +90,14 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
 
     recv_addr.sin_family      = AF_INET;
     recv_addr.sin_port        = htons(rx_port);
-    recv_addr.sin_addr.s_addr = inet_addr(config_.rx_address_.c_str());
+    // recv_addr.sin_addr.s_addr = inet_addr(config_.rx_address_.c_str());
+    recv_addr.sin_addr.s_addr = inet_addr(rx_address.c_str());
 
     if (recv_addr.sin_addr.s_addr == INADDR_NONE)
     {
       std::stringstream ss;
-      ss <<  "Illegal receive address specified: " << config_.rx_address_;
+      // ss <<  "Illegal receive address specified: " << config_.rx_address_;
+      ss <<  "Illegal receive address specified: " << rx_address;
       this->set_thread_init_error(ss.str());
       return;
     }
@@ -82,10 +105,13 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
     if (bind(recv_socket, (struct sockaddr*)&recv_addr, sizeof(recv_addr)) == -1)
     {
       std::stringstream ss;
-      ss <<  "RX channel failed to bind receive socket for address " << config_.rx_address_ << " port " << rx_port << " : " << strerror(errno);
+      // ss <<  "RX channel failed to bind receive socket for address " << config_.rx_address_ << " port " << rx_port << " : " << strerror(errno);
+      ss <<  "RX channel failed to bind receive socket for address " << rx_address << " port " << rx_port << " : " << strerror(errno);
       this->set_thread_init_error(ss.str());
       return;
     }
+    LOG4CXX_DEBUG_LEVEL(1, logger_, " *** RX thread bound receive socket to address " << rx_address << " port " << rx_port);
+    rx_address_itr++; // Move to the next address in the list
 
     // Register this socket
     this->register_socket(recv_socket, boost::bind(&FrameReceiverUDPRxThread::handle_receive_socket, this, recv_socket, (int)rx_port));

@@ -708,7 +708,18 @@ void FrameReceiverController::configure_rx_thread(OdinData::IpcMessage& config_m
       CONFIG_RX_PORTS, current_rx_port_list);
   if (rx_port_list != current_rx_port_list)
   {
+    LOG4CXX_TRACE(logger_, "tokeniser_port_list entered with port_list_str: " << rx_port_list);
     config_.tokenize_port_list(config_.rx_ports_, rx_port_list);
+    need_rx_thread_reconfig_ = true;
+  }
+
+  std::string current_rx_address_list = config_.rx_address_list();
+  std::string rx_address_list = config_msg.get_param<std::string>(
+      CONFIG_RX_ADDRESS_LIST, current_rx_address_list);
+  if (rx_address_list != current_rx_address_list)
+  {
+    LOG4CXX_TRACE(logger_, "tokeniser: tokenizing address list string: " << rx_address_list);
+    config_.tokenize_address_list(config_.rx_address_list_, rx_address_list);
     need_rx_thread_reconfig_ = true;
   }
 
@@ -1193,6 +1204,7 @@ void FrameReceiverController::request_configuration(OdinData::IpcMessage& config
   // Add the RX thread configuration to the reply parameters
   config_reply.set_param(CONFIG_RX_TYPE, FrameReceiverConfig::map_rx_type_to_name(config_.rx_type_));
   config_reply.set_param(CONFIG_RX_ADDRESS, config_.rx_address_);
+  config_reply.set_param(CONFIG_RX_ADDRESS_LIST, config_.rx_address_list());
   config_reply.set_param(CONFIG_RX_PORTS, config_.rx_port_list());
   config_reply.set_param(CONFIG_RX_RECV_BUFFER_SIZE, config_.rx_recv_buffer_size_);
 
