@@ -93,15 +93,15 @@ ProcessFrameStatus Acquisition::process_frame(boost::shared_ptr<Frame> frame, HD
       size_t frame_offset = this->adjust_frame_offset(frame);
       LOG4CXX_TRACE(logger_, "Processing frame: " << frame_no << ", offset: " << frame_offset
           << ", dataset: " << frame_dataset_name);
-      // if (this->concurrent_processes_ > 1) {
-      //   // Check whether this frame should really be in this process
-      //   if ((frame_offset / frames_per_block_) % this->concurrent_processes_ != this->concurrent_rank_) {
-      //     std::stringstream ss;
-      //     ss << "Unexpected frame: " << frame_no << " in this process rank: " << this->concurrent_rank_;
-      //     last_error_ = ss.str();
-      //     return status_invalid;
-      //   }
-      // }
+      if (this->concurrent_processes_ > 1) {
+        // Check whether this frame should really be in this process
+        if ((frame_offset / frames_per_block_) % this->concurrent_processes_ != this->concurrent_rank_) {
+          std::stringstream ss;
+          ss << "Unexpected frame: " << frame_no << " in this process rank: " << this->concurrent_rank_;
+          last_error_ = ss.str();
+          return status_invalid;
+        }
+      }
 
       boost::shared_ptr<HDF5File> file = this->get_file(frame_offset, call_durations);
 

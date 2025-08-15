@@ -251,6 +251,8 @@ class FrameProcessorAdapter(OdinDataAdapter):
 
     def setup_rank(self):
         # Attempt initialisation of the connected clients
+        # Fix 'number' at 1 for all clients (prevents Odin rejecting consecutive frames)
+        # return 
         processes = len(self._clients)
         rank = 0
         for client in self._clients:
@@ -259,7 +261,7 @@ class FrameProcessorAdapter(OdinDataAdapter):
                 parameters = {
                     'hdf': {
                         'process': {
-                            'number': processes,
+                            'number': 1,    #processes,
                             'rank': rank
                         }
                     }
