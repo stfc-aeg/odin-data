@@ -1,6 +1,6 @@
 [
   {
-    "version": "master",
-    "url": "https://stfc-aeg.github.io/odin-data/master/"
+    "version": "ipc_message_pydantic",
+    "url": "https://stfc-aeg.github.io/odin-data/ipc_message_pydantic/"
   }
 ]
