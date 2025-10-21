@@ -706,19 +706,21 @@ void FrameReceiverController::configure_rx_thread(OdinData::IpcMessage& config_m
   std::string current_rx_port_list = config_.rx_port_list();
   std::string rx_port_list = config_msg.get_param<std::string>(
       CONFIG_RX_PORTS, current_rx_port_list);
+  LOG4CXX_DEBUG_LEVEL(2, logger_, "Current RX port list: " << current_rx_port_list << " RX port list: " << rx_port_list);
   if (rx_port_list != current_rx_port_list)
   {
-    LOG4CXX_TRACE(logger_, "tokeniser_port_list entered with port_list_str: " << rx_port_list);
+    LOG4CXX_DEBUG_LEVEL(2, logger_, "Tokenise rx port list " << rx_port_list);
     config_.tokenize_port_list(config_.rx_ports_, rx_port_list);
     need_rx_thread_reconfig_ = true;
   }
 
   std::string current_rx_address_list = config_.rx_address_list();
   std::string rx_address_list = config_msg.get_param<std::string>(
-      CONFIG_RX_ADDRESS_LIST, current_rx_address_list);
+      CONFIG_RX_ADDRESS_LIST, config_.rx_address_);
+  LOG4CXX_DEBUG_LEVEL(2, logger_, "Current RX address list: " << current_rx_address_list << " RX address list: " << rx_address_list);
   if (rx_address_list != current_rx_address_list)
   {
-    LOG4CXX_TRACE(logger_, "tokeniser: tokenizing address list string: " << rx_address_list);
+    LOG4CXX_DEBUG_LEVEL(2, logger_, "Tokenise rx address list " << rx_address_list);
     config_.tokenize_address_list(config_.rx_address_list_, rx_address_list);
     need_rx_thread_reconfig_ = true;
   }

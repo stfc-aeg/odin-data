@@ -10,6 +10,7 @@
 
 #include <boost/thread.hpp>
 #include <boost/asio.hpp>
+#include <boost/algorithm/string.hpp>
 
 #include <log4cxx/logger.h>
 using namespace log4cxx;

@@ -90,13 +90,13 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
 
     recv_addr.sin_family      = AF_INET;
     recv_addr.sin_port        = htons(rx_port);
-    // recv_addr.sin_addr.s_addr = inet_addr(config_.rx_address_.c_str());
+    // Remove any leading, trailing whitespace(s)
+    boost::trim(rx_address);
     recv_addr.sin_addr.s_addr = inet_addr(rx_address.c_str());
 
     if (recv_addr.sin_addr.s_addr == INADDR_NONE)
     {
       std::stringstream ss;
-      // ss <<  "Illegal receive address specified: " << config_.rx_address_;
       ss <<  "Illegal receive address specified: " << rx_address;
       this->set_thread_init_error(ss.str());
       return;
@@ -105,12 +105,11 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
     if (bind(recv_socket, (struct sockaddr*)&recv_addr, sizeof(recv_addr)) == -1)
     {
       std::stringstream ss;
-      // ss <<  "RX channel failed to bind receive socket for address " << config_.rx_address_ << " port " << rx_port << " : " << strerror(errno);
       ss <<  "RX channel failed to bind receive socket for address " << rx_address << " port " << rx_port << " : " << strerror(errno);
       this->set_thread_init_error(ss.str());
       return;
     }
-    LOG4CXX_DEBUG_LEVEL(1, logger_, " *** RX thread bound receive socket to address " << rx_address << " port " << rx_port);
+    LOG4CXX_DEBUG_LEVEL(2, logger_, "RX thread bound receive socket to address " << rx_address << " port " << rx_port);
     rx_address_itr++; // Move to the next address in the list
 
     // Register this socket
