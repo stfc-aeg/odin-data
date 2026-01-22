@@ -35,15 +35,7 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
 
   int addresses_size = config_.rx_address_list_.size();
   int ports_size = config_.rx_ports_.size();
-  if (addresses_size != ports_size)
-  {
-    std::stringstream ss;
-    ss << "RX channel address list size (" << addresses_size << ") does not match port list size (" << ports_size << ")";
-    this->set_thread_init_error(ss.str());
-    return;
-  }
 
-  // Clunky galore..
   std::vector<std::string>::iterator rx_address_itr = config_.rx_address_list_.begin();
 
   for (std::vector<uint16_t>::iterator rx_port_itr = config_.rx_ports_.begin(); rx_port_itr != config_.rx_ports_.end(); rx_port_itr++)
@@ -110,7 +102,11 @@ void FrameReceiverUDPRxThread::run_specific_service(void)
       return;
     }
     LOG4CXX_DEBUG_LEVEL(2, logger_, "RX thread bound receive socket to address " << rx_address << " port " << rx_port);
-    rx_address_itr++; // Move to the next address in the list
+
+    if (addresses_size == ports_size)
+      rx_address_itr++;
+    else
+      LOG4CXX_DEBUG_LEVEL(2, logger_, "Unequal number of addresses and ports, reusing first address");
 
     // Register this socket
     this->register_socket(recv_socket, boost::bind(&FrameReceiverUDPRxThread::handle_receive_socket, this, recv_socket, (int)rx_port));
